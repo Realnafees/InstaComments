@@ -2,7 +2,7 @@ const { Builder, By, Key, until, ass, WebElement } = require("selenium-webdriver
 const assert = require("assert");
 let webUrl = "https://www.instagram.com/";
 let userName = ["meme.bazi_", "food_ka_tadka", "i_am_brokenpoet", "i_.am_memer"];
-let password = ["1212"];
+
 let comments = [
 	"nice post ",
 	"amazing",
@@ -12,6 +12,7 @@ let comments = [
 	"nice lines",
 	"keep posting",
 	"best page ever",
+	'😻😻😻',
 	"rply me",
 	"check dm ",
 	"magnificient",
@@ -121,7 +122,7 @@ describe("Open my Web App", function () {
 		it("Enter username", async () => {
 			try {
 				let elem = await waitForElementByName("username");
-				elem.sendKeys(userName[0]);
+				elem.sendKeys(userName[i]);
 			} catch (e) {
 				console.log("Login", e);
 				throw e;
@@ -147,7 +148,7 @@ describe("Open my Web App", function () {
 				throw e;
 			}
 		});
-		delay(3000);
+		delay(4000);
 		it("Click on Not Now", async () => {
 			try {
 				let elem = await waitForElementByClassName("sqdOP yWX7d    y3zKF     ");
@@ -267,7 +268,7 @@ describe("Open my Web App", function () {
 					let elem = await waitForElementsByClassName("sqdOP yWX7d    y3zKF     ");
 					// console.log(elem.length);
 					elem[0].click();
-					elem[1].click();
+					// elem[1].click();
 				} catch (e) {
 					console.log("Click on Submit Comment Error", e);
 					throw e;
@@ -278,8 +279,9 @@ describe("Open my Web App", function () {
 
 		it("Close post  ", async () => {
 			try {
-				let elem = await waitForElementsByClassName("wpO6b  ");
-				elem[13].click();
+				let elem = await waitForElementsByClassName("                     Igw0E     IwRSH      eGOV_         _4EzTm                                                                                  BI4qX            qJPeX            fm1AK   TxciK yiMZG");
+			console.log("::::elemelem",elem.length);
+				elem[0].click();
 			} catch (e) {
 				console.log("Close Post error ", e);
 				throw e;
@@ -307,4 +309,5 @@ describe("Open my Web App", function () {
 		});
 		delay(3000);
 	}
+	after(() => driver && driver.quit());
 });
